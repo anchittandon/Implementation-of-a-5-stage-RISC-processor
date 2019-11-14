@@ -1,5 +1,5 @@
 .main:
-    mov r0, 0
+    mov r0, 0                   @0000
     mov r1, 12    @ replace 12 with the number to be sorted
     st r1, 0[r0]
     mov r1, 7    @ replace 7 with the number to be sorted
@@ -16,15 +16,15 @@
     mov r3, 6    @ REPLACE 6 WITH N, where, N is the number of numbers being sorted
     call .bubblesort
     .terminate:
-        b .terminate
+        b .terminate            @0010
 .bubblesort:
     mov r4, r3      @ store the number of elements to be sorted in one iteration in r4 (which ititially is equal to the number of elements)
     .traverse:
-        ld r5, 0[r2]    @ loads the ith element in r5
-        ld r6, 4[r2]    @ loads the (i+1)th element in r6
-        cmp r5, r6      @ compare the
-        bgt .exchange   @ if ith element greater then exchange them
-        b .next         @ else move to the (i+1)th and (i+2)th elements
+        ld r5, 0[r2]            @0012
+        ld r6, 4[r2]            @0013
+        cmp r5, r6              @0014
+        bgt .exchange           @0015
+        b .next                 @0016
         .exchange:
             st r6, 0[r2]
             st r5, 4[r2]
@@ -39,6 +39,3 @@
             cmp r3, 1   @ keep sorting till all the elements are sorted
             bgt .traverse
             ret
-
-
-
